@@ -29,7 +29,7 @@ public class AdminRegistration implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		if (!userRepository.existsByEmail(email)) {
-			User user = new User();
+			User user = new User(null, "ADMIN", email, 0L, AES.encrypt(password), "ADMIN",false);
 			user.setEmail(email);
 			user.setPassword(AES.encrypt(password));
 			user.setRole("ADMIN");
