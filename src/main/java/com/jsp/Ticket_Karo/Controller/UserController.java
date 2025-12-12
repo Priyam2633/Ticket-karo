@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jsp.Ticket_Karo.Service.UserService;
 import com.jsp.Ticket_Karo.dto.LoginDto;
+import com.jsp.Ticket_Karo.dto.MovieDto;
 import com.jsp.Ticket_Karo.dto.PasswordDto;
 import com.jsp.Ticket_Karo.dto.ScreenDto;
 import com.jsp.Ticket_Karo.dto.TheaterDto;
@@ -172,5 +173,18 @@ public class UserController {
 	public String updateScreen(@Valid ScreenDto screenDto, BindingResult result, @RequestParam Long id, ModelMap map,
 			RedirectAttributes attributes, HttpSession session) {
 		return userService.updateScreen(screenDto, id, result, session, attributes, map);
+	}
+	@GetMapping("/manage-movies")
+	public String manageMovies(HttpSession session, RedirectAttributes attributes, ModelMap map) {
+		return userService.manageMovies(session, attributes, map);
+	}
+	@GetMapping("/add-movie")
+	public String loadAddMovie(MovieDto movieDto, RedirectAttributes attributes, HttpSession session) {
+		return userService.loadAddMovie(movieDto, attributes, session);
+	}
+
+	@PostMapping("/add-movie")
+	public String addMovie(@Valid MovieDto movieDto,BindingResult result ,RedirectAttributes attributes, HttpSession session) {
+		return userService.addMovie(movieDto,result, attributes, session);
 	}
 }
