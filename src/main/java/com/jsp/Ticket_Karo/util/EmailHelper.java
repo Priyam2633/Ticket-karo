@@ -20,9 +20,9 @@ public class EmailHelper {
 		MimeMessage mimeMessage = mailSender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(mimeMessage);
 		try {
-		helper.setFrom("bookmy-ticket.com", "Book-My-Ticket");
+		helper.setFrom("Ticket-Karo.com", "Ticket-Karo");
 		helper.setTo(email);
-		helper.setSubject("Otp for Creating Account with BookMyTicket");
+		helper.setSubject("Otp for Creating Account with Ticket-Karo");
 		Context context = new Context();
 		context.setVariable("name", name);
 		context.setVariable("otp", otp);

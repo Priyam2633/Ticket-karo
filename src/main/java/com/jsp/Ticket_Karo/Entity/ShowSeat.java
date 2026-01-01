@@ -7,17 +7,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import lombok.Data;
 
-@Data
 @Entity
-public class Seat {
+@Data
+public class ShowSeat {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String seatNumber;
-	private String seatRow;
-	private Integer seatColumn;
-	private String category;
-
 	@ManyToOne
-	Screen screen;
+	private Seat seat;
+	private boolean isBooked;
 }

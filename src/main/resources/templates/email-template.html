@@ -5,60 +5,100 @@
     <title>OTP Verification</title>
 
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(135deg, #4e54c8, #8f94fb);
+            box-sizing: border-box;
+        }
+
+        body {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            font-family: "Poppins", "Segoe UI", sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
         }
 
         .otp-card {
-            background: #ffffff;
-            width: 420px;
-            padding: 30px 35px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+            width: 440px;
+            padding: 35px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
             text-align: center;
-            animation: fadeIn 0.6s ease-in-out;
+            animation: slideUp 0.7s ease;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to   { opacity: 1; transform: translateY(0); }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .otp-title {
-            font-size: 28px;
+        .logo {
+            font-size: 26px;
+            font-weight: 700;
+            color: #5a67d8;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 24px;
             font-weight: 600;
-            margin-bottom: 20px;
-            color: #333;
+            color: #222;
+            margin-bottom: 18px;
+        }
+
+        .greeting {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 10px;
         }
 
         .highlight {
-            color: #4e54c8;
-            font-weight: bold;
+            color: #5a67d8;
+            font-weight: 600;
         }
 
         .otp-box {
-            margin-top: 25px;
+            margin: 25px auto;
             display: inline-block;
-            font-size: 38px;
-            letter-spacing: 8px;
+            padding: 14px 26px;
+            font-size: 36px;
+            letter-spacing: 10px;
             font-weight: 700;
-            color: #4e54c8;
-            background: #f1f2ff;
-            padding: 12px 20px;
-            border-radius: 10px;
+            color: #5a67d8;
+            background: linear-gradient(135deg, #edf2ff, #e0e7ff);
+            border-radius: 12px;
+            box-shadow: inset 0 0 0 1px #c3dafe;
         }
 
-        .footer-text {
-            margin-top: 20px;
+        .info {
             font-size: 14px;
             color: #666;
+            line-height: 1.6;
+        }
+
+        .divider {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 22px 0;
+        }
+
+        .footer {
+            font-size: 13px;
+            color: #888;
+        }
+
+        .footer span {
+            color: #e53e3e;
+            font-weight: 600;
         }
     </style>
 </head>
@@ -66,17 +106,30 @@
 <body>
 
 <div class="otp-card">
-    <div class="otp-title">OTP Verification</div>
+    <div class="logo">🔐 Secure Access</div>
+    <div class="title">OTP Verification</div>
 
-    <h2>
+    <p class="greeting">
         Hello <span class="highlight" th:text="${name}"></span>,
-    </h2>
+    </p>
 
-    <p>Your One-Time Password is:</p>
+    <p class="info">
+        Use the One-Time Password below to verify your account.
+    </p>
 
     <div class="otp-box" th:text="${otp}"></div>
 
-    
+    <p class="info">
+        This OTP is valid for <strong>5 minutes</strong>.  
+        Please do not share it with anyone.
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="footer">
+        If you didn’t request this, please ignore this message. <br>
+        <span>Stay safe.</span>
+    </p>
 </div>
 
 </body>
